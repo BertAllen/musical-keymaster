@@ -1,13 +1,15 @@
 
-var app = angular.module('login', [
-    'firebase'
-]);
+// var app = angular.module('login', [
+//     'firebase'
+// ]);
 
 app.constant('FBREF', 'https://stackunderflow.firebaseio.com/')
 
 app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
     var ac = this;
     var db = new Firebase(FBREF);
+    
+    $scope.userData = $firebaseArray(db);
     $scope.member;
     // facebook login
     $scope.facebookLogin = function () {
@@ -89,6 +91,12 @@ app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
         //THis LINE SAVES THE USER INFO INTO THE FIREBASE DB
         db.child('users').child(authData.uid).update(userToSave);
     }
+// firebase upload may need to look like this ......................
+// $scope.addMessage = function() {
+//     $scope.messages.$add({
+//       text: $scope.newMessageText
+//     });
+//   };
 
 
     $scope.register = function () {
