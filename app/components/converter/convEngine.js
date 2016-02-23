@@ -45,11 +45,9 @@ app.service("ConversionEngine", function () {
             this.guitarTable.push(this.guitar);
     }
     
-    //TODO: more fancy stuff to create table pointers within the song objects & eventually reconvert to the crazy/stupid keys that we "switched" out of above (if needed) ....................
+
     */
-    
-
-
+  
     this.converter = function(chord, list){
         for(var i =0; i < list.length; i++){
             var currentChord = list[i];
@@ -59,6 +57,12 @@ app.service("ConversionEngine", function () {
             }
         }
     }
+
+this.analyze = function(phrase){
+    
+}
+
+
 
 }) // end of ConversionEngine service
 
