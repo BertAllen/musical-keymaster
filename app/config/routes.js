@@ -9,5 +9,10 @@ app.config(function($stateProvider, $urlRouterProvider){
         controllerAs: 'hc'
     })
     
-   // .state
+   .state('splash',{
+       url: '/splash',
+       templateUrl: 'app/components/home/splash.html',
+       controller: "AuthController",
+       controllerAs: 'ac'
+   })
 })
