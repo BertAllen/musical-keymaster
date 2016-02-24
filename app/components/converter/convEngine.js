@@ -61,6 +61,27 @@ app.service("ConversionEngine", function () {
         return chord;
     }
      
+      this.toGuitar = function (chord) {
+        alert('toGuitar inservice');//delete this line after first run-through
+        switch (chord) {
+            case "A#":
+                chord = "Bb";
+                break;
+            case "Db":
+                chord = "C#";
+                break;
+            case "D#":
+                chord = "Eb";
+                break;
+            case "Gb":
+                chord = "F#";
+                break;
+            case "G#":
+                chord = "Ab";
+        }
+        return chord;
+    }
+     
     //reference lists to create conversion tables from
     this.sharpList = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
     this.flatList = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab'];
