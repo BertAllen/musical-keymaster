@@ -1,5 +1,5 @@
 app.config(function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/splash');
+    $urlRouterProvider.otherwise('/oldsplash');
     
     $stateProvider.state('home', {
         url: '/home',
@@ -9,9 +9,9 @@ app.config(function($stateProvider, $urlRouterProvider){
         controllerAs: 'hc'
     })
     
-   .state('splash',{
+   .state('oldsplash',{
        url: '/splash',
-       templateUrl: 'repoChance/splash.html',
+       templateUrl: 'repoChance/oldsplash.html',
        controller: "AuthController",
        controllerAs: 'ac'
    })
