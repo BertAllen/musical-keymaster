@@ -109,7 +109,7 @@ app.service("ConversionEngine", function () {
     
 
     */
-
+    // v--Jake's code ..................
     this.converter = function (chord, list) {
         for (var i = 0; i < list.length; i++) {
             var currentChord = list[i];
@@ -120,11 +120,72 @@ app.service("ConversionEngine", function () {
         }
     }
 
-//preliminary parsing function to distinguish chord lines from lyrics
-    this.sharpParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#'];
-    this.flatParse = ['Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb'];
-    this.analyze = function (phrase) {
+    //preliminary parsing function to distinguish chord lines from lyrics
+    this.prelimParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', '7', '9'];
 
+    this.analyze = function (phrase) {
+        var flag = 0;
+        for (var i = 0; i < this.prelimParse.length; i++) {
+            if (phrase.search(this.prelimParse[i])) {
+                flag++;
+                if (flag <= 2) {
+                    return true;
+                }
+            }
+        }
+        if (phrase.length === 1) {
+            return true;
+        }
+for(var i=0; i<phrase.length; i++){
+    var spaceFlag =0;
+    var sharpFlag =0;
+    var chordFlag =0;
+    var numFlag =0;
+    var augDimFlag =0;
+    //trap all other capitols and return flase if found (thanks Rob)
+    if(phrase.charCodeAt(i)<91 && phrase.charCodeAt(i)>71){
+        return false;
+    }
+    switch (phrase.charCodeAt(i)) {
+        case 32:
+        spaceFlag ++;
+        break;
+        case 35:
+        sharpFlag ++;
+        break;
+        //chord section
+        case 65:
+        case 66:
+        case 67:
+        case 68:
+        case 69:
+        case 70:
+        case 71:
+        chordFlag ++;
+        break;
+        case 55:
+        case 57:
+        numFlag ++;
+        break;
+        case 43:
+        case 45:
+        augDimFlag ++;
+        
+    }
+}
+    //analysis of switch results
+    //preponderance of spaces --v
+    if(spaceFlag*2 > phrase.length){
+        return true;
+    }
+    // preponderance of CAPS and other spesh characters --v
+    if((chordFlag + augDimFlag + sharpFlag + numFlag)*3 > phrase.length){
+        return true;
+    }
+    
+    //TODO more traps happen here ........................
+    
+    
     }
 
 
