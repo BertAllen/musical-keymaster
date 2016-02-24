@@ -60,8 +60,8 @@ app.service("ConversionEngine", function () {
         }
         return chord;
     }
-     
-      this.toGuitar = function (chord) {
+
+    this.toGuitar = function (chord) {
         alert('toGuitar inservice');//delete this line after first run-through
         switch (chord) {
             case "A#":
@@ -120,6 +120,9 @@ app.service("ConversionEngine", function () {
         }
     }
 
+//preliminary parsing function to distinguish chord lines from lyrics
+    this.sharpParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#'];
+    this.flatParse = ['Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb'];
     this.analyze = function (phrase) {
 
     }
