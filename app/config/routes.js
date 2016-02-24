@@ -1,5 +1,5 @@
 app.config(function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/splash');
     
     $stateProvider.state('home', {
         url: '/home',

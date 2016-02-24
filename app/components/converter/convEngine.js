@@ -1,65 +1,65 @@
 app.service("ConversionEngine", function () {
     
     //This converts difficult chords (B# to C), (E# to F), (Cb to B), (Fb to E) to good stuff
-     this.funkOut = function(chord){
-         alert("funkOut inservice"); //delete this line after first run-through
-         switch (chord){
-             case "B#":
-             chord = "C";
-             break;
-             case "E#":
-             chord = "F";
-             break;
-             case "Cb":
-             chord = "B";
-             break;
-             case "Fb":
-             chord = "E";
-         }
-         return chord;
-     }
-     
-     this.toFlat = function(chord){
-         alert('toFlat inservice');//delete this line after first run-through
-         switch (chord){
-             case "A#":
-             chord = "Bb";
-             break;
-             case "C#":
-             chord = "Db";
-             break;
-             case "D#":
-             chord = "Eb";
-             break;
-             case "F#":
-             chord = "Gb";
-             break;
-             case "G#":
-             chord = "Ab";
-         }
-         return chord;
-     }
-     
-     this.toSharp = function(chord){
-         alert('toSharp inservice');//delete this line after first run-through
-         switch (chord){
-             case "Bb":
-             chord = "A#";
-             break;
-             case "Db":
-             chord = "C#";
-             break;
-             case "Eb":
-             chord = "D#";
-             break;
-             case "Gb":
-             chord = "F#";
-             break;
-             case "Ab":
-             chord = "G#";
-         }
-         return chord;
-     }
+    this.funkOut = function (chord) {
+        alert("funkOut inservice"); //delete this line after first run-through
+        switch (chord) {
+            case "B#":
+                chord = "C";
+                break;
+            case "E#":
+                chord = "F";
+                break;
+            case "Cb":
+                chord = "B";
+                break;
+            case "Fb":
+                chord = "E";
+        }
+        return chord;
+    }
+
+    this.toFlat = function (chord) {
+        alert('toFlat inservice');//delete this line after first run-through
+        switch (chord) {
+            case "A#":
+                chord = "Bb";
+                break;
+            case "C#":
+                chord = "Db";
+                break;
+            case "D#":
+                chord = "Eb";
+                break;
+            case "F#":
+                chord = "Gb";
+                break;
+            case "G#":
+                chord = "Ab";
+        }
+        return chord;
+    }
+
+    this.toSharp = function (chord) {
+        alert('toSharp inservice');//delete this line after first run-through
+        switch (chord) {
+            case "Bb":
+                chord = "A#";
+                break;
+            case "Db":
+                chord = "C#";
+                break;
+            case "Eb":
+                chord = "D#";
+                break;
+            case "Gb":
+                chord = "F#";
+                break;
+            case "Ab":
+                chord = "G#";
+        }
+        return chord;
+    }
      
     //reference lists to create conversion tables from
     this.sharpList = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
@@ -88,20 +88,20 @@ app.service("ConversionEngine", function () {
     
 
     */
-  
-    this.converter = function(chord, list){
-        for(var i =0; i < list.length; i++){
+
+    this.converter = function (chord, list) {
+        for (var i = 0; i < list.length; i++) {
             var currentChord = list[i];
-            if(chord === currentChord){
+            if (chord === currentChord) {
                 //go up by 2 make sure thats okay
                 //return list[nextIndex]
             }
         }
     }
 
-this.analyze = function(phrase){
-    
-}
+    this.analyze = function (phrase) {
+
+    }
 
 
 
