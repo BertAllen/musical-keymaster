@@ -110,5 +110,7 @@ app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
         db.authWithPassword(ac.user, handleDBResponse)
     }
 
-
+     $scope.logout = function(){
+        alert("logged out")
+    }
 })
