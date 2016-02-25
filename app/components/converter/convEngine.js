@@ -88,27 +88,7 @@ app.service("ConversionEngine", function () {
     this.guitarList = ['A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab'];
 
     
-    /* all this code is not needed for our purposes
-    this.sharpTable = [];
-    this.flatTable = [];
-    this.guitarTable = [];
-
-    for (var h = 0; h < 12; h++) {
-    this.sharp = {};
-    this.flat = {};
-    this.guitar = {};
-        for (var i = 0; i < 12; i++) {
-            this.sharp[i.toString()]=this.sharpList[h + i];
-            this.flat[i.toString()]=this.flatList[h + i];
-            this.guitar[i.toString()]=this.guitarList[h + i];
-        }
-            this.sharpTable.push(this.sharp);
-            this.flatTable.push(this.flat);
-            this.guitarTable.push(this.guitar);
-    }
-    
-
-    */
+   
     // v--Jake's code ..................
     this.converter = function (chord, list) {
         for (var i = 0; i < list.length; i++) {
@@ -120,8 +100,8 @@ app.service("ConversionEngine", function () {
         }
     }
 
-    //preliminary parsing function to distinguish chord lines from lyrics
-    this.prelimParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', '7', '9'];
+    // parsing function to distinguish chord lines from lyrics
+    this.prelimParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', '7', '9', '+'];
 
     this.analyze = function (phrase) {
         var flag = 0;
@@ -136,57 +116,59 @@ app.service("ConversionEngine", function () {
         if (phrase.length === 1) {
             return true;
         }
-for(var i=0; i<phrase.length; i++){
-    var spaceFlag =0;
-    var sharpFlag =0;
-    var chordFlag =0;
-    var numFlag =0;
-    var augDimFlag =0;
-    //trap all other capitols and return flase if found (thanks Rob)
-    if(phrase.charCodeAt(i)<91 && phrase.charCodeAt(i)>71){
-        return false;
-    }
-    switch (phrase.charCodeAt(i)) {
-        case 32:
-        spaceFlag ++;
-        break;
-        case 35:
-        sharpFlag ++;
-        break;
-        //chord section
-        case 65:
-        case 66:
-        case 67:
-        case 68:
-        case 69:
-        case 70:
-        case 71:
-        chordFlag ++;
-        break;
-        case 55:
-        case 57:
-        numFlag ++;
-        break;
-        case 43:
-        case 45:
-        augDimFlag ++;
-        
-    }
-}
-    //analysis of switch results
-    //preponderance of spaces --v
-    if(spaceFlag*2 > phrase.length){
-        return true;
-    }
-    // preponderance of CAPS and other spesh characters --v
-    if((chordFlag + augDimFlag + sharpFlag + numFlag)*3 > phrase.length){
-        return true;
-    }
+        for (var i = 0; i < phrase.length; i++) {
+            var spaceFlag = 0;
+            var sharpFlag = 0;
+            var chordFlag = 0;
+            var numFlag = 0;
+            var augDimFlag = 0;
+            //trap all other capitols and return flase if found (thanks Rob)
+            if (phrase.charCodeAt(i) < 91 && phrase.charCodeAt(i) > 71) {
+                return false;
+            }
+            switch (phrase.charCodeAt(i)) {
+                case 32:
+                    spaceFlag++;
+                    break;
+                case 35:
+                    sharpFlag++;
+                    break;
+                //chord section
+                case 65:
+                case 66:
+                case 67:
+                case 68:
+                case 69:
+                case 70:
+                case 71:
+                    chordFlag++;
+                    break;
+                    //the numbers 7 and 9
+                case 55:
+                case 57:
+                    numFlag++;
+                    break;
+                    //the characters - and +
+                case 43:
+                case 45:
+                    augDimFlag++;
+
+            }
+        }
+        //analysis of switch results
+        //preponderance of spaces --v
+        if (spaceFlag * 2 > phrase.length) {
+            return true;
+        }
+        // preponderance of CAPS and other spesh characters --v
+        if ((chordFlag + augDimFlag + sharpFlag + numFlag) * 3 > phrase.length) {
+            return true;
+        }
     
-    //TODO more traps happen here ........................
+        //TODO more traps happen here (possibly) ........................
     
-    
-    }
+        return false; //when all other tests fail
+    }//end of analyze function
 
 
 
