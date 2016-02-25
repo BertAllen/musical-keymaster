@@ -13,7 +13,5 @@ app.controller('HomeController', function($scope, ConversionEngine){
         console.log($scope.musicInput.charCodeAt(i))}
     }
     
-    $scope.logout = function(){
-        alert("logged out")
-    }
+   
 })

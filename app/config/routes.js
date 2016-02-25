@@ -5,8 +5,8 @@ app.config(function($stateProvider, $urlRouterProvider){
         url: '/home',
         // template: '<h1> Hi <h1>',
        templateUrl: 'app/components/home/home.html',
-        controller: 'AuthController',
-        controllerAs: 'ac'
+        controller: 'HomeController',
+        controllerAs: 'hc'
     })
     
    .state('oldsplash',{

@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <!--<div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -20,19 +20,22 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" ui-sref="?">KeyMaster (LOGO)</a>
-    </div>
+    </div>-->
 </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+          <li><a class="navbar-brand" ui-sref="oldsplash">KeyMaster (LOGO)</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a ng-click="">D&D</a></li>
-        <li><a ng-click="load()">Load</a></li>
-        <li><a ng-click="save()">Save</a></li>
-        <li><a ng-click="delete()">Delete</a></li>
-        <li><a ng-click="newsong()">New</a></li>
-        <li><a ng-click="share()">Share</a></li>
-        <li><a href="javascript:window.print()">Print</a></li>
-        <button type="button" class="btn btn-default navbar-btn" ng-click="logout()">Sign Out</button>
+        <li><a class="navbar-brand" ng-click=""><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
+        <li><a class="navbar-brand" ng-click="load()"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+        <li><a class="navbar-brand"ng-click="save()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></a></li> 
+        <li><a class="navbar-brand" ng-click="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+        <li><a class="navbar-brand"ng-click="newsong()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
+        <li><a class="navbar-brand"ng-click="share()"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></li>
+        <li><a class="navbar-brand"href="javascript:window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></a></li>
+        <button type="button" class="btn btn-danger navbar-btn" ng-click="logout()">Sign Out</button>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
