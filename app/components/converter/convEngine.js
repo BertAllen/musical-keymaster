@@ -109,12 +109,22 @@ app.service("ConversionEngine", function () {
             return false;
         }
         }
+        // debugger;
         if (phrase.length === 1 && phrase.charCodeAt(0) != 32) {
             return true;
         }
          if (phrase.length === 0) {
             return false;
         }
+        if(phrase.search("Bridge") !=-1 ){
+            return false;
+        }
+        if(phrase.search("Chorus") !=-1){
+            return false;
+        }
+        // if(phrase.search(String.fromCharCode(46)) !=-1){
+        //     return false;
+        // }
     this.prelimParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', '2', '7', '9'];
         var flag = 0;
         for (var i = 0; i < this.prelimParse.length; i++) {
@@ -130,7 +140,6 @@ app.service("ConversionEngine", function () {
             var chordFlag = 0;
             var numFlag = 0;
             var augDimFlag = 0;
-        // debugger;
         for (var i = 0; i < phrase.length; i++) {
             switch (phrase.charCodeAt(i)) {
                 case 32:
