@@ -101,31 +101,37 @@ app.service("ConversionEngine", function () {
     }
 
     // parsing function to distinguish chord lines from lyrics
-    this.prelimParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', '7', '9', '+'];
 
     this.analyze = function (phrase) {
+            //trap all other capitols and return flase if found (thanks Rob)
+        for(var i=0; i < phrase.length; i++){
+        if (phrase.charCodeAt(i) < 91 && phrase.charCodeAt(i) > 71 && phrase.charCodeAt(i) != 75) {
+            return false;
+        }
+        }
+        if (phrase.length === 1 && phrase.charCodeAt(0) != 32) {
+            return true;
+        }
+         if (phrase.length === 0) {
+            return false;
+        }
+    this.prelimParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', '2', '7', '9'];
         var flag = 0;
         for (var i = 0; i < this.prelimParse.length; i++) {
-            if (phrase.search(this.prelimParse[i])) {
+            if (phrase.search(this.prelimParse[i]) > 0) {
                 flag++;
-                if (flag <= 2) {
+                if (flag >= 2) {
                     return true;
                 }
             }
         }
-        if (phrase.length === 1) {
-            return true;
-        }
-        for (var i = 0; i < phrase.length; i++) {
             var spaceFlag = 0;
             var sharpFlag = 0;
             var chordFlag = 0;
             var numFlag = 0;
             var augDimFlag = 0;
-            //trap all other capitols and return flase if found (thanks Rob)
-            if (phrase.charCodeAt(i) < 91 && phrase.charCodeAt(i) > 71) {
-                return false;
-            }
+        // debugger;
+        for (var i = 0; i < phrase.length; i++) {
             switch (phrase.charCodeAt(i)) {
                 case 32:
                     spaceFlag++;
@@ -143,12 +149,15 @@ app.service("ConversionEngine", function () {
                 case 71:
                     chordFlag++;
                     break;
-                    //the numbers 7 and 9
+                //the numbers 2, 7 and 9
+                case 50:
                 case 55:
                 case 57:
                     numFlag++;
                     break;
-                    //the characters - and +
+                //the characters ( ) - +
+                case 40:
+                case 41:
                 case 43:
                 case 45:
                     augDimFlag++;
@@ -161,7 +170,7 @@ app.service("ConversionEngine", function () {
             return true;
         }
         // preponderance of CAPS and other spesh characters --v
-        if ((chordFlag + augDimFlag + sharpFlag + numFlag) * 3 > phrase.length) {
+        if (((chordFlag + augDimFlag + sharpFlag + numFlag) +1) * 3 >= phrase.length) {
             return true;
         }
     
