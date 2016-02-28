@@ -116,12 +116,12 @@ app.service("ConversionEngine", function () {
          if (phrase.length === 0) {
             return false;
         }
-        if(phrase.search("Bridge") !=-1 ){
+        if(phrase.search("Bridge") !=-1 || phrase.search("o") !=-1){
             return false;
         }
-        if(phrase.search("Chorus") !=-1){
-            return false;
-        }
+        // if(phrase.search("o") !=-1){
+        //     return false;
+        // }
         // if(phrase.search(String.fromCharCode(46)) !=-1){
         //     return false;
         // }
