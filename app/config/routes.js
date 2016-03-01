@@ -11,7 +11,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     
    .state('splash',{
        url: '/splash',
-       templateUrl: 'repoChance/oldsplash.html',
+       templateUrl: 'repoChance/index.html',
        controller: "AuthController",
        controllerAs: 'ac'
    })

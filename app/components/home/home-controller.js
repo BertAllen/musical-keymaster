@@ -21,7 +21,7 @@ app.controller('HomeController', function ($scope, ConversionEngine) {
                         // v--- this line is for debugging and checking the parser
             // console.log($scope.lineArr[i], $scope.isTab);
             if($scope.isTab){
-                ConversionEngine.convert($scope.lineArr[i] $scope.accidental)
+                ConversionEngine.convert($scope.lineArr[i], $scope.accidental)
             }
         } //end lineArr for loop
     }
