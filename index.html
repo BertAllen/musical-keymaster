@@ -1,85 +1,48 @@
-<html ng-app="MasterModule"ng-cloak>
+<html ng-app="MasterModule" ng-cloak>
+
 <head>
     <meta charset="UTF-8">
     <title>Musical Keymaster</title>
 
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
- <link rel="stylesheet" href="app\config\style.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app\config\style.css">
 
 </head>
+
 <body>
-    
-    <!--<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li> 
-      <li><a href="#">Page 3</a></li> 
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>-->
-    
-        
-<div ng-controller="AuthController">    
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+    <div ng-controller="AuthController">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a class="navbar-brand" ui-sref="splash">KeyMaster (LOGO)</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="navbar-brand" ng-click=""><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
+                    <li><a class="navbar-brand" ng-click="load()"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+                    <li><a class="navbar-brand" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></a></li>
+                    <li><a class="navbar-brand" ng-click="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                    <li><a class="navbar-brand" ng-click="newsong()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
+                    <li><a class="navbar-brand" ng-click="share()"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></li>
+                    <li><a class="navbar-brand" href="javascript:window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></a></li>
+                    <button type="button" class="btn btn-danger navbar-btn" ng-click="logout()">Sign Out</button>
+                </ul>
+        </nav>
+        <ui-view></ui-view>
 
-      <!--<ul class="nav navbar-nav">
-          <li><a class="navbar-brand" ui-sref="oldsplash">KeyMaster (LOGO)</a></li>-->
+        <!--LOAD ANGULAR-->
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <!--<div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" ui-sref="?">KeyMaster (LOGO)</a>
-    </div>-->
-</div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-left">
-          <li><a class="navbar-brand" ui-sref="splash">KeyMaster (LOGO)</a></li>
+        <!--LOAD FIREBASE-->
+        <script src="bower_components/firebase/firebase.js"></script>
+        <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
 
-      <!--</ul>
-      <ul class="nav navbar-nav navbar-right">-->
-        <li><a class="navbar-brand" ng-click=""><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
-        <li><a class="navbar-brand" ng-click="load()"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
-        <li><a class="navbar-brand"ng-click="save()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></a></li> 
-        <li><a class="navbar-brand" ng-click="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-        <li><a class="navbar-brand"ng-click="newsong()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
-        <li><a class="navbar-brand"ng-click="share()"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></li>
-        <li><a class="navbar-brand"href="javascript:window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></a></li>
-        <button type="button" class="btn btn-danger navbar-btn" ng-click="logout()">Sign Out</button>
-      </ul>
-    </div> 
-  </div>
-</nav>
-  <ui-view></ui-view>
-    
-    <!--LOAD ANGULAR-->
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    
-    <!--LOAD FIREBASE-->
-    <script src="bower_components/firebase/firebase.js"></script>
-    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
-    
-    <!--START APP-->
-    <script src="app/config/init.js"></script>   
-     <script src="repoChance/app.js"></script>
-    <script src="app/config/routes.js"></script>
-    <script src="app/components/home/home-controller.js"></script>
-    <script src="app/components/converter/convEngine.js"></script>
+        <!--START APP-->
+        <script src="app/config/init.js"></script>
+        <script src="repoChance/app.js"></script>
+        <script src="app/config/routes.js"></script>
+        <script src="app/components/home/home-controller.js"></script>
+        <script src="app/components/converter/convEngine.js"></script>
 </body>
+
 </html>
