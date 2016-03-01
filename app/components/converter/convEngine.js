@@ -81,12 +81,26 @@ app.service("ConversionEngine", function () {
         }
         return chord;
     }
+     /* pseudo-code for the "converter" function .............
      
+     to parser --> 
+     tabLine == true -->
+     sift "A"-"G" -->
+     ? is next char "#" or "b"
+     grab chordBlock -->
+     run funkOut --> run shifter
+     replace chordBlock -->
+     GOTO next chordBlock -->
+     GOTO next tabLine
+     */
     //reference lists to create conversion tables from
     this.sharpList = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
     this.flatList = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab'];
     this.guitarList = ['A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab'];
 
+this.convert = function(tabLine, accidental){
+    
+}
    
     // v--- Jake's code ..................
     this.converter = function (chord, list) {
@@ -108,7 +122,7 @@ app.service("ConversionEngine", function () {
             return false;
         }
         }
-        // debugger;
+        debugger;
         if (phrase.length === 1 && phrase.charCodeAt(0) != 32) {
             return true;
         }
