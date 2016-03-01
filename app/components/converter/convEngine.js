@@ -83,12 +83,13 @@ app.service("ConversionEngine", function () {
     }
      /* pseudo-code for the "converter" function .............
      
-     to parser --> 
-     tabLine == true -->
+     to parser --> .... done
+     tabLine == true --> .... done
      sift "A"-"G" -->
      ? is next char "#" or "b"
      grab chordBlock -->
-     run funkOut --> run shifter
+     run funkOut --> 
+     run shifter -->
      replace chordBlock -->
      GOTO next chordBlock -->
      GOTO next tabLine
