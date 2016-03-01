@@ -1,6 +1,5 @@
 app.controller('HomeController', function ($scope, ConversionEngine) {
     
-    // $scope.test = "<p>hello</p>"
     $scope.peekaboo = function () {
         $scope.lineArr = $scope.musicInput.split(String.fromCharCode(10));
 
@@ -19,7 +18,8 @@ app.controller('HomeController', function ($scope, ConversionEngine) {
             $scope.isTab = false;
             // $scope.lineArr[i].isTab = ConversionEngine.analyze($scope.lineArr[i]);
                         $scope.isTab = ConversionEngine.analyze($scope.lineArr[i]);
-            console.log($scope.lineArr[i], $scope.isTab);
+                        // v--- this line is for debugging and checking the parser
+            // console.log($scope.lineArr[i], $scope.isTab);
         }
     }
 

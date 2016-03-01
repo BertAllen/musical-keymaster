@@ -87,9 +87,8 @@ app.service("ConversionEngine", function () {
     this.flatList = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab'];
     this.guitarList = ['A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab'];
 
-    
    
-    // v--Jake's code ..................
+    // v--- Jake's code ..................
     this.converter = function (chord, list) {
         for (var i = 0; i < list.length; i++) {
             var currentChord = list[i];
@@ -100,7 +99,7 @@ app.service("ConversionEngine", function () {
         }
     }
 
-    // parsing function to distinguish chord lines from lyrics
+    // v-- parsing function to distinguish chord lines from lyrics
 
     this.analyze = function (phrase) {
             //trap all other capitols and return flase if found (thanks Rob)
@@ -122,9 +121,7 @@ app.service("ConversionEngine", function () {
         if(phrase.search("Chorus") !=-1){
             return false;
         }
-        // if(phrase.search(String.fromCharCode(46)) !=-1){
-        //     return false;
-        // }
+        
     this.prelimParse = ['A#', 'B#', 'C#', 'D#', 'E#', 'F#', 'G#', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', '2', '7', '9'];
         var flag = 0;
         for (var i = 0; i < this.prelimParse.length; i++) {
@@ -183,10 +180,8 @@ app.service("ConversionEngine", function () {
             return true;
         }
     
-        //TODO more traps happen here (possibly) ........................
-    
         return false; //when all other tests fail
-    }//end of analyze function
+    }//end of analyze (parsing) function ---^
 
 
 
