@@ -1,79 +1,89 @@
+// app.js
+// angular.module('login', ['auth0', 'angular-storage', 'angular-jwt'])
+// .config(function (authProvider) {
+//   authProvider.init({
+//     domain: 'keymaster.auth0.com',
+//     clientID: 'RqkkaDYUm5BB9qfWe5rLAQDIbOcbX4dX'
+//   });
+// })
+// .run(function(auth) {
+//   // This hooks al auth events to check everything as soon as the app starts
+//   auth.hookEvents();
+// });
 
-// var app = angular.module('login', [
-//     'firebase'
-// ]);
+// // app.js
+// myApp.config(function (authProvider, $routeProvider, $httpProvider, jwtInterceptorProvider) {
+//   // ...
 
-app.constant('FBREF', 'https://stackunderflow.firebaseio.com/')
+//   // We're annotating this function so that the `store` is injected correctly when this file is minified
+//   jwtInterceptorProvider.tokenGetter = ['store', function(store) {
+//     // Return the saved token
+//     return store.get('token');
+//   }];
+
+//   $httpProvider.interceptors.push('jwtInterceptor');
+//   // ...
+// });
+// angular.module('myApp', ['auth0', 'angular-storage', 'angular-jwt'])
+// .run(function($rootScope, auth, store, jwtHelper, $location) {
+//   // This events gets triggered on refresh or URL change
+//   $rootScope.$on('$locationChangeStart', function() {
+//     var token = store.get('token');
+//     if (token) {
+//       if (!jwtHelper.isTokenExpired(token)) {
+//         if (!auth.isAuthenticated) {
+//           auth.authenticate(store.get('profile'), token);
+//         }
+//       } else {
+//         // Either show the login page or use the refresh token to get a new idToken
+//         $location.path('/');
+//       }
+//     }
+//   });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+var app = angular.module('login', [
+    'firebase'
+]);
+
+app.constant('FBREF', 'https://realstackunderflow.firebaseio.com/')
 
 app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
     var ac = this;
     var db = new Firebase(FBREF);
-    
-    $scope.userData = $firebaseArray(db);
     $scope.member;
-    // facebook login
-    $scope.facebookLogin = function () {
-        db.authWithOAuthPopup('facebook', function (err, authData) {
+    // social button login
+    $scope.socialAuth = function (type) {
+        db.authWithOAuthPopup(type, function (err, authData) {
             if (err) {
                 console.log(err);
                 return;
             }
             var userToSave = {
-                username: authData.facebook.displayName,
+                username: authData[type].displayName,
                 reputation: 0,
                 created: Date.now()
-            }
+            }     
             $scope.$apply(function () {
                 $scope.member = userToSave;
             })
-
-            var cutOffFacebookIndex = authData.uid.indexOf(':') + 1;
-            db.child('users').child(authData.uid.slice(cutOffFacebookIndex)).update(userToSave)
+            db.child('users').child(authData.uid).update(userToSave)
         })
     }
     
     
-    // Twitter login
-    $scope.twitterLogin = function () {
-        db.authWithOAuthPopup('twitter', function (err, authData) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            var userToSave = {
-                username: authData.twitter.displayName,
-                reputation: 0,
-                created: Date.now()
-            }
-            $scope.$apply(function () {
-                $scope.member = userToSave;
-            })
-
-            var cutOffTwitterIndex = authData.uid.indexOf(':') + 1;
-            db.child('users').child(authData.uid.slice(cutOffTwitterIndex)).update(userToSave)
-        })
-    }
     
-    // Google login
-    $scope.googleLogin = function () {
-        db.authWithOAuthPopup('facebook', function (err, authData) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            var userToSave = {
-                username: authData.google.displayName,
-                reputation: 0,
-                created: Date.now()
-            }
-            $scope.$apply(function () {
-                $scope.member = userToSave;
-            })
-
-            var cutOffGoogleIndex = authData.uid.indexOf(':') + 1;
-            db.child('users').child(authData.uid.slice(cutOffGoogleIndex)).update(userToSave)
-        })
-    }
     function handleDBResponse(err, authData) {
         if (err) {
             console.log(err);
@@ -91,12 +101,6 @@ app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
         //THis LINE SAVES THE USER INFO INTO THE FIREBASE DB
         db.child('users').child(authData.uid).update(userToSave);
     }
-// firebase upload may need to look like this ......................
-// $scope.addMessage = function() {
-//     $scope.messages.$add({
-//       text: $scope.newMessageText
-//     });
-//   };
 
 
     $scope.register = function () {
@@ -110,7 +114,5 @@ app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
         db.authWithPassword(ac.user, handleDBResponse)
     }
 
-     $scope.logout = function(){
-        alert("logged out")
-    }
+
 })
