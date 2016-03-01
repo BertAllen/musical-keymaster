@@ -1,18 +1,18 @@
-<html ng-app="MasterModule">
+<html ng-app="login">
 
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="repoChance/bootstrap-social.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
-
-<body ng-controller="AuthController as ac">
+    
+    <body ng-controller="AuthController as ac">
 
     <ui-view class="font"></ui-view>
 
-
+    {{2+2}}
     <div class="container">
         <div class="text-center">
             <h1>Welcome to Musical Keymaster</h1>
@@ -48,15 +48,15 @@
                 <button class="btn btn-danger" type="submit" ng-click="register()">Register</button>
             </div>
         </form>
-        <a class="btn btn-block btn-social btn-twitter">
+        <a class="btn btn-block btn-social btn-twitter" ng-click="socialAuth('twitter')">
             <span class="fa fa-twitter"></span> Sign in with Twitter
         </a>
 
-        <a class="btn btn-block btn-social btn-Google">
+        <a class="btn btn-block btn-social btn-google" ng-click="socialAuth('google')">
             <span class="fa fa-google"></span> Sign in with Google
         </a>
 
-        <a class="btn btn-block btn-social btn-Facebook">
+        <a class="btn btn-block btn-social btn-facebook" ng-click="socialAuth('facebook')">
             <span class="fa fa-Facebook"></span> Sign in with Facebook
         </a>
 
@@ -67,10 +67,11 @@
 
     </div>
 
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
-    <script src="repoChance/app.js"></script>-->
+    <script src="app/app.js"></script>
 
 </body>
 
