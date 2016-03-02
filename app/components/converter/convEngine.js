@@ -123,7 +123,7 @@ this.convert = function(tabLine, accidental){
             return false;
         }
         }
-        debugger;
+        // debugger;
         if (phrase.length === 1 && phrase.charCodeAt(0) != 32) {
             return true;
         }

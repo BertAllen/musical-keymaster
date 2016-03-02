@@ -19,7 +19,7 @@ app.controller('HomeController', function ($scope, ConversionEngine) {
             // $scope.lineArr[i].isTab = ConversionEngine.analyze($scope.lineArr[i]);
                         $scope.isTab = ConversionEngine.analyze($scope.lineArr[i]);
                         // v--- this line is for debugging and checking the parser
-            // console.log($scope.lineArr[i], $scope.isTab);
+            console.log($scope.lineArr[i], $scope.isTab);
             if($scope.isTab){
                 ConversionEngine.convert($scope.lineArr[i], $scope.accidental)
             }
