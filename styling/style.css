@@ -5,6 +5,7 @@
 
 body { 
     background: url("brown-04.jpg");
+    margin: 10px;
 }
 
 .navbar-default{
