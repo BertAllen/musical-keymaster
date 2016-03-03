@@ -32,7 +32,7 @@ label{
 .form-control{
     border: 1px solid blanchedalmond;
     color: blanchedalmond;
-    background-color: rgba(0,0,0,.40);
+    background-color: rgba(0,0,0,.50);
     margin-bottom:15px;
 }
 
@@ -53,8 +53,4 @@ label{
 
 .socialbuttons{
     right: 50%;
-}
-
-input[type="checkbox"]{
-    color: magenta
 }
