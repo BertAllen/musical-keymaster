@@ -1,0 +1,56 @@
+.glyphicon{
+    vertical-align: top;
+    color: blanchedalmond;
+    padding-bottom: 2px}
+.glyphicon:hover{
+    zoom: 115%;
+}
+
+body { 
+    background: url("brown-04.jpg");
+    margin: 10px;
+}
+
+.navbar-default{
+    background: url("brighter.jpg");
+     background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: transparent;
+    justify-content: center;
+    
+    }
+
+#welcome{
+    color: blanchedalmond;
+}
+
+
+label{
+    color: blanchedalmond;
+}
+
+.form-control{
+    border: 1px solid blanchedalmond;
+    color: blanchedalmond;
+    background-color: rgba(0,0,0,.50);
+    margin-bottom:15px;
+}
+
+.btn-default {
+    border: 1px solid blanchedalmond;
+    color: blanchedalmond;
+    background-color: rgba(0,0,0,.50);
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active {
+    border: 1px solid blanchedalmond;
+    outline: 0;
+    color: #000;
+    background-color: blanchedalmond;
+}
+
+.socialbuttons{
+    right: 50%;
+}
