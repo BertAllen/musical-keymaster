@@ -5,10 +5,10 @@
     <title>Musical Keymaster</title>
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="app\config\style.css">
 
     <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styling\style.css">
 
 
 </head>
@@ -28,7 +28,7 @@
                     <li><a class="navbar-brand" ng-click="newsong()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
                     <li><a class="navbar-brand" ng-click="share()"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></li>
                     <li><a class="navbar-brand" href="javascript:window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></a></li>
-                    <button type="button" class="btn btn-danger navbar-btn" ng-click="logout()">Sign Out</button>
+                    <li><a ng-click="logout()"class="navbar-brand" href="javascript:window.print()"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a></li>
                 </ul>
         </nav>
         <ui-view></ui-view>
