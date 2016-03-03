@@ -39,7 +39,7 @@ label{
 .btn-default {
     border: 1px solid blanchedalmond;
     color: blanchedalmond;
-    background-color: #3E2B1D;
+    background-color: rgba(0,0,0,.50);
 }
 
 .btn-default:hover,
@@ -49,5 +49,12 @@ label{
     outline: 0;
     color: #000;
     background-color: blanchedalmond;
-    zoom: 115%;
+}
+
+.socialbuttons{
+    right: 50%;
+}
+
+input[type="checkbox"]{
+    color: magenta
 }
