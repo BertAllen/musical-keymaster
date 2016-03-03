@@ -2,6 +2,9 @@
     vertical-align: top;
     color: blanchedalmond;
     padding-bottom: 2px}
+.glyphicon:hover{
+    zoom: 115%;
+}
 
 body { 
     background: url("brown-04.jpg");
@@ -46,4 +49,5 @@ label{
     outline: 0;
     color: #000;
     background-color: blanchedalmond;
+    zoom: 115%;
 }
