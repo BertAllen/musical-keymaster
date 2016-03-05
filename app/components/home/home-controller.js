@@ -19,11 +19,16 @@ app.controller('HomeController', function ($scope, ConversionEngine) {
             // $scope.lineArr[i].isTab = ConversionEngine.analyze($scope.lineArr[i]);
                         $scope.isTab = ConversionEngine.analyze($scope.lineArr[i]);
                         // v--- this line is for debugging and checking the parser
-            console.log($scope.lineArr[i], $scope.isTab);
+            // console.log($scope.lineArr[i], $scope.isTab);
             if($scope.isTab){
                 ConversionEngine.convert($scope.lineArr[i], $scope.slider.value, $scope.accidental)
             }
         } //end lineArr for loop
+    }
+    
+    $scope.downAndDirty = function () {
+        $scope.newTabLine = ConversionEngine.convert($scope.tabLine, $scope.slider.value, $scope.accidental);
+        return $scope.newTabLine;
     }
     
     //code for fancy slider bar
