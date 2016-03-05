@@ -15,4 +15,11 @@ app.config(function($stateProvider, $urlRouterProvider){
        controller: "AuthController",
        controllerAs: 'ac'
    })
+   
+   .state('onDemand', {
+       url: '/onDemand',
+       templateUrl: 'app/components/home/on-the-fly-box.html',
+       controller: 'HomeController',
+       controllerAs: "hc"
+   })
 })

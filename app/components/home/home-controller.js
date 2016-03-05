@@ -21,9 +21,22 @@ app.controller('HomeController', function ($scope, ConversionEngine) {
                         // v--- this line is for debugging and checking the parser
             console.log($scope.lineArr[i], $scope.isTab);
             if($scope.isTab){
-                ConversionEngine.convert($scope.lineArr[i], $scope.slider, $scope.accidental)
+                ConversionEngine.convert($scope.lineArr[i], $scope.slider.value, $scope.accidental)
             }
         } //end lineArr for loop
     }
+    
+    //code for fancy slider bar
+    $scope.slider = { //requires angular-bootstrap to display tooltips
+ value: 0,
+ options: {
+   floor: -11,
+   ceil: 11,
+   showTicksValues: true,
+   ticksValuesTooltip: function(v) {
+     return 'Tooltip for ' + v;
+   }
+ }
+};
 
 })

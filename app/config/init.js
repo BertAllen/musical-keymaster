@@ -1,1 +1,1 @@
-var app = angular.module('MasterModule', ["ui.router", 'firebase'])
+var app = angular.module('MasterModule', ["ui.router", 'firebase','rzModule'])

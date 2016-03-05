@@ -1,0 +1,18 @@
+<div>
+    <form action="" ng-submit="ConvEngine.convert(tabLine, slider.value, accidental)">
+    <label name="flat-sharp">Flat</label>
+    <input type="radio" name="flat-sharp" value="b" ng-model="accidental">
+    <label name="flat-sharp">Guitar</label>
+    <input type="radio" name="flat-sharp" checked="checked" value="g" mg-model="accidental">
+    <label name="flat-sharp">Sharp</label>
+    <input type="radio" name="flat-sharp" value="#" ng-model="accidental">
+    <label name="Key-change slider"></label>
+    <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+    <!--<input type="range" min="-11" max="11" ng-model="slider" list="ticks"><span>{{slider}}</span>-->
+    <label name="Chord Input Box"></label>
+    <input type="text" ng-model="tabLine"></br>
+    <label name="Chord Output Box"></label>
+    <input type="text" ng-model="newTabLine">
+    <button ng-click="submit">Convert</button>
+</form>
+</div>
