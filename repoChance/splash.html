@@ -50,20 +50,41 @@
         </form>
 
         <div class="row">
-            <div class="col-lg-12 col-lg-offset-4">
+            <div class="col-lg-5 col-lg-offset-2">
                 <a class="btn btn-default btn-twitter" ng-click="socialAuth('twitter')">
                     <span class="fa fa-twitter"></span> Sign in with Twitter
                 </a>
-
+                <br>
                 <a class="btn btn-default btn-google" ng-click="socialAuth('google')">
                     <span class="fa fa-google"></span> Sign in with Google
                 </a>
-
+                <br>
                 <a class="btn btn-default btn-facebook" ng-click="socialAuth('facebook')">
                     <span class="fa fa-Facebook"></span> Sign in with Facebook
                 </a>
+                <br>
 
             </div>
+            <div class="col-lg-5  float">
+                <form action="" ng-submit="downAndDirty()">
+                    <label name="flat-sharp">Flat</label>
+                    <input type="radio" name="flat-sharp" value="b" ng-model="accidental">
+                    <label name="flat-sharp">Guitar</label>
+                    <input type="radio" name="flat-sharp" checked="checked" value="g" mg-model="accidental">
+                    <label name="flat-sharp">Sharp</label>
+                    <input type="radio" name="flat-sharp" value="#" ng-model="accidental">
+                    <label name="Key-change slider"></label>
+                    <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+                    <!--<input type="range" min="-11" max="11" ng-model="slider" list="ticks"><span>{{slider}}</span>-->
+                    <label name="Chord Input Box"></label>
+                    <input type="text" ng-model="tabLine">
+                    </br>
+                    <label name="Chord Output Box"></label>
+                    <input type="text" ng-model="newTabLine">
+                    <button ng-click="submit">Convert</button>
+                </form>
+            </div>
+
         </div>
 
 

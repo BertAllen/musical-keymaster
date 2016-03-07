@@ -18,6 +18,7 @@ app.config(function($stateProvider, $urlRouterProvider){
    
    .state('onDemand', {
        url: '/onDemand',
+    //    template: '<dnd-box></dnd-box>',
        templateUrl: 'app/components/home/on-the-fly-box.html',
        controller: 'HomeController',
        controllerAs: "hc"

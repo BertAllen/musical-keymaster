@@ -7,12 +7,12 @@
     <label name="flat-sharp">Sharp</label>
     <input type="radio" name="flat-sharp" value="#" ng-model="accidental">
     <label name="Key-change slider"></label>
-    <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+    <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options" class="slider"></rzslider>
     <!--<input type="range" min="-11" max="11" ng-model="slider" list="ticks"><span>{{slider}}</span>-->
     <label name="Chord Input Box"></label>
-    <input type="text" ng-model="tabLine"></br>
+    <input type="text" placeholder="Input chords here" maxlength="50" ng-model="tabLine"></br>
     <label name="Chord Output Box"></label>
-    <input type="text" ng-model="newTabLine">
+    <input type="text" placeholder="Transposed chords" disabled maxlength="50" ng-model="newTabLine">
     <button ng-click="submit">Convert</button>
 </form>
 </div>
