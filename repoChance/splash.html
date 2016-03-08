@@ -32,7 +32,10 @@
                     <input type="password" class="form-control" ng-model="ac.user.password" id="pwd" placeholder="Enter password">
                     <div class="button-group">
                         <button class="btn btn-default" type="submit" ng-click="login()">Login</button>
-                        <button class="btn btn-default" type="submit" ng-click="register()">Register</button>
+                        <button style="margin-right:60px"class="btn btn-default" type="submit" ng-click="register()">Register</button>
+                        <a class="btn btn-default btn-twitter" ng-click="socialAuth('twitter')"><span class="fa fa-twitter"></span> Sign in with Twitter</a>
+                        <a class="btn btn-default btn-google" ng-click="socialAuth('google')"><span class="fa fa-google"></span> Sign in with Google</a>
+                        <a class="btn btn-default btn-facebook" ng-click="socialAuth('facebook')"><span class="fa fa-Facebook"></span> Sign in with Facebook</a>
                     </div>
                 </div>
             </div>
@@ -50,22 +53,7 @@
         </form>
 
         <div class="row">
-            <div class="col-lg-3 col-lg-offset-2">
-                <a class="btn btn-default btn-twitter" ng-click="socialAuth('twitter')">
-                    <span class="fa fa-twitter"></span> Sign in with Twitter
-                </a>
-                <br>
-                <a class="btn btn-default btn-google" ng-click="socialAuth('google')">
-                    <span class="fa fa-google"></span> Sign in with Google
-                </a>
-                <br>
-                <a class="btn btn-default btn-facebook" ng-click="socialAuth('facebook')">
-                    <span class="fa fa-Facebook"></span> Sign in with Facebook
-                </a>
-                <br>
-
-            </div>
-            <div class="col-lg-7  float" ng-controller="HomeController">
+            <div class="col-lg-7 col-lg-offset-3  float" ng-controller="HomeController">
                 <form ng-submit="downAndDirty()" class="form">
                     <label name="flat-sharp">Flat</label>
                     <input type="radio" name="flat-sharp" value="b" ng-model="accidental">
