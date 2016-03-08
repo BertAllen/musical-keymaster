@@ -61,16 +61,16 @@ app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
     }
 
   //code for fancy slider bar
-    $scope.slider = { //requires angular-bootstrap to display tooltips
- value: 0,
- options: {
-   floor: -11,
-   ceil: 11,
-   showTicksValues: true,
-   ticksValuesTooltip: function(v) {
-     return 'Tooltip for ' + v;
-   }
- }
-};
+//     $scope.slider = { //requires angular-bootstrap to display tooltips
+//  value: 0,
+//  options: {
+//    floor: -11,
+//    ceil: 11,
+//    showTicksValues: true,
+//    ticksValuesTooltip: function(v) {
+//      return 'Tooltip for ' + v;
+//    }
+//  }
+// };
 
 })

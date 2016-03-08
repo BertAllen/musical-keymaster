@@ -41,8 +41,12 @@ label{
 
 .form-control[disabled]{
     /*color: #310 bold;*/
-    background: rgba(165, 108, 23, 0.71);
+    background: rgba(165, 108, 23, 0.40);
     
+}
+
+.btn{
+    margin-bottom: 4px;
 }
 
 .btn-default {
