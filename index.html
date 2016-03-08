@@ -21,15 +21,16 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li><a class="navbar-brand" ui-sref="splash">KeyMaster (LOGO)</a></li>
                 </ul>
+                <!--state({name: state.name})-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a title="Down & Dirty" class="navbar-brand" ui-sref="/onDemand"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
+                    <li><a title="Down & Dirty" class="navbar-brand" ui-sref="onDemand"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
                     <li><a title="Load Song" class="navbar-brand" ng-click="load()"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
                     <li><a title="Save Song" class="navbar-brand" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></a></li>
                     <li><a title="Delete Song"class="navbar-brand" ng-click="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
                     <li><a title="New Song" class="navbar-brand" ng-click="newsong()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
                     <li><a title="Share" class="navbar-brand" ng-click="share()"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></li>
                     <li><a title="Print" class="navbar-brand" href="javascript:window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></a></li>
-                    <li><a title="Log Out" ng-click="logout()"class="navbar-brand" href="javascript:window.print()"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a></li>
+                    <li><a title="Log Out" ng-click="logout()"class="navbar-brand" ui-sref="splash"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a></li>
                 </ul>
         </nav>
         <ui-view></ui-view>

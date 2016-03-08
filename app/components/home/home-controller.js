@@ -21,10 +21,11 @@ app.controller('HomeController', function ($scope, ConversionEngine) {
                         // v--- this line is for debugging and checking the parser
             // console.log($scope.lineArr[i], $scope.isTab);
             if($scope.isTab){
-                ConversionEngine.convert($scope.lineArr[i], $scope.slider.value, $scope.accidental)
+               $scope.lineArr[i] = ConversionEngine.convert($scope.lineArr[i], $scope.slider.value, $scope.accidental)
             }
         } //end lineArr for loop
-    }
+        $scope.musicInput = $scope.lineArr.join(String.fromCharCode(10));
+    }//end of peekaboo
     
     $scope.downAndDirty = function () {
         $scope.newTabLine = ConversionEngine.convert($scope.tabLine, $scope.slider.value, $scope.accidental);

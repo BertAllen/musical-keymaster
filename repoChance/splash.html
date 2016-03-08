@@ -51,6 +51,11 @@
 
             </div>
         </form>
+        
+        <div ng-show="member">
+            <h2 id="welcome">Welcome {{member.username}}</h2>
+        </div>
+
 
         <div class="row">
             <div class="col-lg-7 col-lg-offset-3  float" ng-controller="HomeController">
@@ -77,10 +82,7 @@
 
 
 
-        <div ng-show="member">
-            <h2>Welcome {{member.username}}</h2>
-        </div>
-    </div>
+            </div>
 
     </div>
 
