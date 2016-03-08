@@ -1,5 +1,5 @@
 app.controller('HomeController', function ($scope, ConversionEngine) {
-    
+    $scope.accidental = "g";
     $scope.peekaboo = function () {
         $scope.lineArr = $scope.musicInput.split(String.fromCharCode(10));
 

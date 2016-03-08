@@ -39,6 +39,12 @@ label{
     margin-bottom:15px;
 }
 
+.form-control[disabled]{
+    /*color: #310 bold;*/
+    background: rgba(165, 108, 23, 0.71);
+    
+}
+
 .btn-default {
     border: 1px solid blanchedalmond;
     color: blanchedalmond;
