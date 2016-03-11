@@ -1,7 +1,9 @@
 .glyphicon{
     vertical-align: top;
     color: blanchedalmond;
-    padding-bottom: 2px}
+    padding-bottom: 5px;
+    font-size: 30px;}
+    
 .glyphicon:hover{
     zoom: 115%;
 }
@@ -17,7 +19,7 @@ body {
     background-repeat: no-repeat;
     border: transparent;
     justify-content: center;
-    
+    height: 80px;
     }
 
 #welcome{
@@ -68,6 +70,11 @@ label{
     right: 50%;
 }
 
+#logo{
+    height: 80px;
+    
+    padding-bottom: 35px;
+}
 
 /*! angularjs-slider - v2.10.2 - 
  (c) Rafal Zajac <rzajac@gmail.com>, Valentin Hervieu <valentin@hervieu.me>, Jussi Saarivirta <jusasi@gmail.com>, Angelin Sirbu <angelin.sirbu@gmail.com> - 
