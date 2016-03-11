@@ -3,7 +3,7 @@
 //     'firebase'
 // ]);
 
-app.constant('FBREF', 'https://realstackunderflow.firebaseio.com/')
+app.constant('FBREF', 'https://resplendent-torch-2208.firebaseio.com/')
 
 app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
     var ac = this;
