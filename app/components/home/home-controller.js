@@ -1,6 +1,7 @@
-app.controller('HomeController', function ($scope, ConversionEngine) {
+app.controller('HomeController', function ($rootScope, $scope, ConversionEngine) {
     $scope.accidental = "g";
-    $scope.peekaboo = function () {
+    $scope.peekaboo = function() {
+        var originalInput = $scope.musicInput;
         $scope.lineArr = $scope.musicInput.split(String.fromCharCode(10));
 
         /*
@@ -25,10 +26,15 @@ app.controller('HomeController', function ($scope, ConversionEngine) {
             }
         } //end lineArr for loop
         $scope.musicInput = $scope.lineArr.join(String.fromCharCode(10));
+debugger
+        $rootScope.member.mySongs = $rootScope.member.mySongs || {};
+        var newSong = { originalInput: originalInput, musicInput: $scope.musicInput, title: $scope.title };
+        $rootScope.member.mySongs[newSong.title] = newSong;
+        
     }//end of peekaboo
     
     $scope.downAndDirty = function () {
-        $scope.newTabLine = ConversionEngine.convert($scope.tabLine, $scope.slider.value, $scope.accidental);
+        $scope.newTabLine = ConversionEngine.convert($scope.tabLine, $scope.slider.value, $scope.accidental);       
         return $scope.newTabLine;
     }
     
