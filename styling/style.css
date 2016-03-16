@@ -1,3 +1,6 @@
+body{
+    font-family: 'Libre Baskerville', serif;
+}
 .glyphicon{
     vertical-align: top;
     color: blanchedalmond;
@@ -41,6 +44,31 @@ label{
     margin-bottom:15px;
 }
 
+.modal-header {
+   background-color: #3A2818;
+   color: blanchedalmond;
+   border:1px solid blanchedalmond;
+}
+
+.modal-body{
+    border-top: 1px solid blanchedalmond;
+    border-right: 1px solid blanchedalmond;
+    border-left: 1px solid blanchedalmond;
+    border-bottom: black;
+    color: blanchedalmond;
+    background-color: black;
+    
+}
+.modal-footer{
+    border-top: black;
+    border-bottom: 1px solid blanchedalmond;
+    border-right: 1px solid blanchedalmond;
+    border-left: 1px solid blanchedalmond;
+    color: blanchedalmond;
+    background-color: black;
+    
+}
+
 .form-control[disabled]{
     /*color: #310 bold;*/
     background: rgba(165, 108, 23, 0.40);
@@ -60,10 +88,10 @@ label{
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active {
-    border: 1px solid blanchedalmond;
+    border: 1px solid #e5d3b8;
     outline: 0;
     color: #000;
-    background-color: blanchedalmond;
+    background-color: #e5d3b8;
 }
 
 .socialbuttons{
@@ -74,6 +102,12 @@ label{
     height: 80px;
     
     padding-bottom: 35px;
+}
+
+#home-ad{
+    border: 2px solid blanchedalmond;
+    margin-left: 40px;
+    margin-bottom: 40px;
 }
 
 #ad-space{

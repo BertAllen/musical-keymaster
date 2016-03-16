@@ -5,11 +5,12 @@
 </div>-->
 
 
+
+<div class="container" style="width:100%">
 <div class="form-group">
+    <div style="float: left; width: 70%">
     <input type="text" class="form-control" placeholder="Song Title" ng-model="title">
-    <textarea class="form-control" name="song-area" id="" style="width:70%; height:100%" ng-model="musicInput" placeholder="input chord-sheet here ..."></textarea>
-    <!--<button id="chordsubmit" class="btn btn-default" ng-click="peekaboo()">Submit</button>-->
-   <div id="ad-space" class="float col-sm-offset-10 col-sm-2">Your Ad Here!</div>
+    <textarea class="form-control" name="song-area" id="" style="height:100%; margin:0px" ng-model="musicInput" placeholder="input chord-sheet here ..."></textarea>
     <form ng-submit="peekaboo()" class="form">
         <label name="flat-sharp">Flat</label>
         <input type="radio" name="flat-sharp" value="b" ng-model="accidental">
@@ -21,6 +22,31 @@
         <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options" class="slider"></rzslider>
         <!--<input type="range" min="-11" max="11" ng-model="slider" list="ticks"><span>{{slider}}</span>-->
         <button id="songsubmit" ng-click="submit" class="btn btn-default">Convert</button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+  Need Help?
+</button>
     </form>
+    </div>
+    <!--<button id="chordsubmit" class="btn btn-default" ng-click="peekaboo()">Submit</button>-->
+   <div style="width: 25%; height:100%; float: left" id="home-ad">Your Ad Here!</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Tips and Tricks</h4>
+      </div>
+      <div class="modal-body">
+        Helpful info here!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Return To Song</button>
+      </div>
+    </div>
+  </div>
 </div>
 <!--<span>{{musicInput}}</span>-->
