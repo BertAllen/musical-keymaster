@@ -28,7 +28,6 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
             $firebaseObject(new Firebase(FBREF + 'users/' + authData.uid)).$loaded(function(user) {
                 $rootScope.member = user;
                 if (!user.username) {
-                    debugger
                     $rootScope.member.username = userToSave.username;
                     $rootScope.member.reputation = userToSave.reputation;
                     $rootScope.member.created = userToSave.created;
@@ -60,8 +59,8 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
             $rootScope.member = user;
             if (!user.username) {
                 $rootScope.member.username = userToSave.username;
-                $rootScope.member.username = userToSave.reputation;
-                $rootScope.member.username = userToSave.created;
+                $rootScope.member.reputation = userToSave.reputation;
+                $rootScope.member.created = userToSave.created;
                 $rootScope.member.$save();
             }
         });
@@ -79,13 +78,21 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
         db.authWithPassword(ac.user, handleDBResponse)
     }
 
-    $scope.save = function(musicInput) {
+    $scope.save = function() {
+//        if ($rootScope.member.mySongs.title) {
+        if (!$rootScope.member.mySongs.title) {
+alert('Before saving, please make sure your song has a title and you press the convert button with a slider setting of zero.')
+}
         $rootScope.member.$save();
+        // } else {
+        //     $rootScope.member.mySongs = $rootScope.member.mySongs || {};
+        //     var originalInput = $scope.musicInput;
+        //     var newSong = { originalInput: originalInput, musicInput: $scope.musicInput, title: $scope.title };
+        //     $rootScope.member.mySongs[newSong.title] = newSong;
+        //     $rootScope.member.$save();
 
-        // var authData = db.getAuth();
-        // if (authData) {
-        //     db.child('users').child(authData.uid).update($rootScope.member);
         // }
     }
+
 
 });
