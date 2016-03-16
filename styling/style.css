@@ -85,10 +85,10 @@ label{
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active {
-    border: 1px solid blanchedalmond;
+    border: 1px solid #e5d3b8;
     outline: 0;
     color: #000;
-    background-color: blanchedalmond;
+    background-color: #e5d3b8;
 }
 
 .socialbuttons{
@@ -99,6 +99,12 @@ label{
     height: 80px;
     
     padding-bottom: 35px;
+}
+
+#home-ad{
+    border: 2px solid blanchedalmond;
+    margin-left: 40px;
+    margin-bottom: 40px;
 }
 
 #ad-space{
