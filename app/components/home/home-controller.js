@@ -1,11 +1,16 @@
 app.controller('HomeController', function($rootScope, $scope, ConversionEngine) {
     $scope.accidental = "g";
     $scope.peekaboo = function() {
+        if (!$scope.musicInput) {
+            alert("Blank songs cannot be converted. Please input chord and lyric information before attempting to convert.");
+            return;
+         }
         var originalInput = $scope.musicInput;
         // splits original input into individual lines --v
         $scope.lineArr = $scope.musicInput.split(String.fromCharCode(10));
 
         for (var i = 0; i < $scope.lineArr.length; i++) {
+            // debugger;
             // makes sure that the "isTab" flag is set to false before running the parser
             $scope.isTab = false;
             // $scope.lineArr[i].isTab = ConversionEngine.analyze($scope.lineArr[i]);
@@ -19,8 +24,10 @@ app.controller('HomeController', function($rootScope, $scope, ConversionEngine) 
 //reassembles the individual lines back into one solid string --v
         $scope.musicInput = $scope.lineArr.join(String.fromCharCode(10));
 //stuff to save the song info into firebase --v
+        debugger;        
         $rootScope.member.mySongs = $rootScope.member.mySongs || {};
-        var newSong = { originalInput: originalInput, musicInput: $scope.musicInput, title: $scope.title };
+        $rootScope.CANSAVE = $scope.title;
+        var newSong = {"originalInput": originalInput, musicInput: $scope.musicInput, title: $scope.title };
         $rootScope.member.mySongs[newSong.title] = newSong;
 
     }//end of peekaboo

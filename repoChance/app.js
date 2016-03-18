@@ -79,11 +79,14 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
     }
 
     $scope.save = function() {
-//        if ($rootScope.member.mySongs.title) {
-        if (!$rootScope.member.mySongs.title) {
-alert('Before saving, please make sure your song has a title and you press the convert button with a slider setting of zero.')
-}
-        $rootScope.member.$save();
+        // debugger;
+        //        if ($rootScope.member.mySongs.title) {
+        if (!$rootScope.CANSAVE) {
+            alert('Before saving, please make sure your song has a title and you press the convert button with a slider setting of zero.')
+            return;
+        } else {
+            $rootScope.member.$save();
+        }
         // } else {
         //     $rootScope.member.mySongs = $rootScope.member.mySongs || {};
         //     var originalInput = $scope.musicInput;
