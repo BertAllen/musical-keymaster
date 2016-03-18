@@ -45,7 +45,11 @@
                         <h4 class="modal-title" id="myModalLabel">Your Songs</h4>
                     </div>
                     <div class="modal-body">
-
+                         <ul id="songList" ng-repeat="song in member.mySongs">
+                             <li>
+                                 {{song.title}}
+                             </li>
+                         </ul>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
