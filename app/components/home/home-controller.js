@@ -33,7 +33,6 @@ app.controller('HomeController', function($rootScope, $scope, $stateParams, Conv
     }//end of peekaboo
 
     $rootScope.loadSong = function(loadMe) {
-        debugger;
         $scope.title = loadMe;
         $rootScope.member.$loaded(function() {
             $scope.musicInput = $rootScope.member.mySongs[loadMe].musicInput;
