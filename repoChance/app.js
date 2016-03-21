@@ -65,7 +65,10 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
             }
         });
     }
-
+$rootScope.signOut = function() {
+    
+$rootScope.member = {}
+}
 
     $scope.register = function() {
         db.createUser(ac.user, handleDBResponse);

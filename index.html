@@ -33,7 +33,7 @@
                     <li><a title="Delete Song" class="navbar-brand" ng-click="delete()"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
                     <li><a title="Share" class="navbar-brand" ng-click="share()"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></li>
                     <li><a title="Print" class="navbar-brand" href="javascript:window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></a></li>
-                    <li><a title="Log Out" ng-click="logout()" class="navbar-brand" ui-sref="splash"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a></li>
+                    <li><a title="Log Out" ng-click="signOut()" class="navbar-brand" ui-sref="splash"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a></li>
                 </ul>
         </nav>
         <ui-view></ui-view>
@@ -45,7 +45,7 @@
                         <h4 class="modal-title" id="myModalLabel">Your Songs</h4>
                     </div>
                     <div class="modal-body">
-                         <ul id="songList" ng-repeat="song in member.mySongs track by $index">
+                         <ul id="songList" ng-repeat="song in member.mySongs">
                              <li id="song">
                                  {{song.title}} <a ui-sref="home({songName:song.title})"><span class="badge">load song</span></a>
                              </li>
