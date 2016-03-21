@@ -1,10 +1,10 @@
-app.controller('HomeController', function($rootScope, $scope, ConversionEngine) {
+app.controller('HomeController', function($rootScope, $scope, $stateParams, ConversionEngine) {
     $scope.accidental = "g";
     $scope.peekaboo = function() {
         if (!$scope.musicInput) {
             alert("Blank songs cannot be converted. Please input chord and lyric information before attempting to convert.");
             return;
-         }
+        }
         var originalInput = $scope.musicInput;
         // splits original input into individual lines --v
         $scope.lineArr = $scope.musicInput.split(String.fromCharCode(10));
@@ -21,16 +21,24 @@ app.controller('HomeController', function($rootScope, $scope, ConversionEngine) 
                 $scope.lineArr[i] = ConversionEngine.convert($scope.lineArr[i], $scope.slider.value, $scope.accidental)
             }
         } //end lineArr for loop
-//reassembles the individual lines back into one solid string --v
+        //reassembles the individual lines back into one solid string --v
         $scope.musicInput = $scope.lineArr.join(String.fromCharCode(10));
-//stuff to save the song info into firebase --v
-        debugger;        
+        //stuff to save the song info into firebase --v
+        debugger;
         $rootScope.member.mySongs = $rootScope.member.mySongs || {};
         $rootScope.CANSAVE = $scope.title;
-        var newSong = {"originalInput": originalInput, musicInput: $scope.musicInput, title: $scope.title };
+        var newSong = { "originalInput": originalInput, musicInput: $scope.musicInput, title: $scope.title };
         $rootScope.member.mySongs[newSong.title] = newSong;
 
     }//end of peekaboo
+
+    $rootScope.loadSong = function(loadMe) {
+        debugger;
+        $scope.title = loadMe;
+        $rootScope.member.$loaded(function() {
+            $scope.musicInput = $rootScope.member.mySongs[loadMe].musicInput;
+        })
+    }
 
     $scope.downAndDirty = function() {
         $scope.newTabLine = ConversionEngine.convert($scope.tabLine, $scope.slider.value, $scope.accidental);
@@ -51,4 +59,7 @@ app.controller('HomeController', function($rootScope, $scope, ConversionEngine) 
         }
     };
 
+    if ($stateParams.songName) {
+        $rootScope.loadSong($stateParams.songName);
+    }
 })

@@ -45,9 +45,9 @@
                         <h4 class="modal-title" id="myModalLabel">Your Songs</h4>
                     </div>
                     <div class="modal-body">
-                         <ul id="songList" ng-repeat="song in member.mySongs">
+                         <ul id="songList" ng-repeat="song in member.mySongs track by $index">
                              <li id="song">
-                                 {{song.title}} <a href=""><span class="badge">load song</span></a>
+                                 {{song.title}} <a ui-sref="home({songName:song.title})"><span class="badge">load song</span></a>
                              </li>
                          </ul>
                     </div>
