@@ -5,7 +5,7 @@
 
 app.constant('FBREF', 'https://resplendent-torch-2208.firebaseio.com/')
 
-app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseArray, $firebaseObject) {
+app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseArray, $firebaseObject, SweetAlert) {
     var ac = this;
     var db = new Firebase(FBREF);
     var authed = db.getAuth();
@@ -90,15 +90,21 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
         } else {
             $rootScope.member.$save();
         }
-        // } else {
-        //     $rootScope.member.mySongs = $rootScope.member.mySongs || {};
-        //     var originalInput = $scope.musicInput;
-        //     var newSong = { originalInput: originalInput, musicInput: $scope.musicInput, title: $scope.title };
-        //     $rootScope.member.mySongs[newSong.title] = newSong;
-        //     $rootScope.member.$save();
-
-        // }
     }
 
+    $scope.killSong = function() {
+        debugger
+        SweetAlert.swal({
+            title: "Are you sure?",
+            text: "Your will not be able to recover this song if you continue!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, trash it!",
+            closeOnConfirm: false}, 
+            function(){ 
+            SweetAlert.swal(">crumple, crumple — toss< ... It's gone!!");
+        });        
+    }    
 
 });

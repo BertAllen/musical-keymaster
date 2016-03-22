@@ -1,1 +1,1 @@
-var app = angular.module('MasterModule', ["ui.router", 'firebase','rzModule'])
+var app = angular.module('MasterModule', ["ui.router", 'firebase','rzModule','oitozero.ngSweetAlert'])
