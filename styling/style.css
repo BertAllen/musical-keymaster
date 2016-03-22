@@ -1,7 +1,12 @@
+body{
+    font-family: 'Libre Baskerville', serif;
+}
 .glyphicon{
     vertical-align: top;
     color: blanchedalmond;
-    padding-bottom: 2px}
+    padding-bottom: 5px;
+    font-size: 30px;}
+    
 .glyphicon:hover{
     zoom: 115%;
 }
@@ -11,15 +16,37 @@ body {
     margin: 10px;
 }
 
+#song {
+    display: block;
+}
+
+#song:before {
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e002";
+    font-family: 'Glyphicons Halflings';
+    font-size: 7px;
+    float: left;
+    margin-top: 5.5px;
+    margin-left: -17px;
+    color: blanchedalmond;
+}
+
 .navbar-default{
     background: url("brighter.jpg");
      background-size: 100% 100%;
     background-repeat: no-repeat;
     border: transparent;
     justify-content: center;
-    
+    height: 80px;
     }
-
+.badge{
+    background-color: #3A2818;
+    color: blanchedalmond;
+}
+.badge:hover{
+    background-color: #e5d3b8;
+    color: #000;
+}
 #welcome{
     color: blanchedalmond;
 }
@@ -37,6 +64,31 @@ label{
     color: blanchedalmond;
     background-color: rgba(0,0,0,.50);
     margin-bottom:15px;
+}
+
+.modal-header {
+   background-color: #3A2818;
+   color: blanchedalmond;
+   border:1px solid blanchedalmond;
+}
+
+.modal-body{
+    border-top: 1px solid blanchedalmond;
+    border-right: 1px solid blanchedalmond;
+    border-left: 1px solid blanchedalmond;
+    border-bottom: black;
+    color: blanchedalmond;
+    background-color: black;
+    
+}
+.modal-footer{
+    border-top: black;
+    border-bottom: 1px solid blanchedalmond;
+    border-right: 1px solid blanchedalmond;
+    border-left: 1px solid blanchedalmond;
+    color: blanchedalmond;
+    background-color: black;
+    
 }
 
 .form-control[disabled]{
@@ -58,16 +110,31 @@ label{
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active {
-    border: 1px solid blanchedalmond;
+    border: 1px solid #e5d3b8;
     outline: 0;
     color: #000;
-    background-color: blanchedalmond;
+    background-color: #e5d3b8;
 }
 
 .socialbuttons{
     right: 50%;
 }
 
+#logo{
+    height: 80px;
+    
+    padding-bottom: 35px;
+}
+
+#home-ad{
+    border: 2px solid blanchedalmond;
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+
+#ad-space{
+    border: 2px solid blanchedalmond;
+}
 
 /*! angularjs-slider - v2.10.2 - 
  (c) Rafal Zajac <rzajac@gmail.com>, Valentin Hervieu <valentin@hervieu.me>, Jussi Saarivirta <jusasi@gmail.com>, Angelin Sirbu <angelin.sirbu@gmail.com> - 
