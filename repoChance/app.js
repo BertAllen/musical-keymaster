@@ -82,7 +82,6 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
     }
 
     $scope.save = function() {
-        // debugger;
         //        if ($rootScope.member.mySongs.title) {
         if (!$rootScope.CANSAVE) {
             alert('Before saving, please make sure your song has a title and you press the convert button with a slider setting of zero.')
@@ -93,7 +92,6 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
     }
 
     $scope.killSong = function() {
-        debugger
         SweetAlert.swal({
             title: "Are you sure?",
             text: "Your will not be able to recover this song if you continue!",
@@ -102,8 +100,14 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Yes, trash it!",
             closeOnConfirm: false}, 
-            function(){ 
-            SweetAlert.swal(">crumple, crumple — toss< ... It's gone!!");
+            function(isConfirm) {
+                if (!isConfirm) {
+                    return;
+                }
+               SweetAlert.swal(">crumple, crumple — toss< ... It's gone!!");
+               delete $rootScope.member.mySongs[$rootScope.CANSAVE];
+               $rootScope.member.$save();
+                $rootScope.clrAftrDel();
         });        
     }    
 

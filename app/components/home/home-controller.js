@@ -35,8 +35,14 @@ app.controller('HomeController', function($rootScope, $scope, $stateParams, Conv
         $scope.title = loadMe;
         $rootScope.member.$loaded(function() {
             $scope.musicInput = $rootScope.member.mySongs[loadMe].musicInput;
+            $rootScope.CANSAVE = $scope.title;
         })
     }
+
+    $rootScope.clrAftrDel = function() {
+        $scope.musicInput = "";
+        $scope.title = "";
+}
 
     $scope.downAndDirty = function() {
         $scope.newTabLine = ConversionEngine.convert($scope.tabLine, $scope.slider.value, $scope.accidental);
