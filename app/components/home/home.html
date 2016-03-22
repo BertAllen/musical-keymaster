@@ -5,10 +5,12 @@
 </div>-->
 
 
+
+<div class="container" style="width:100%">
 <div class="form-group">
-    <textarea class="form-control" name="song-area" id="" style="width:70%; height:100%" ng-model="musicInput" placeholder="input chord-sheet here ..."></textarea>
-    <!--<button id="chordsubmit" class="btn btn-default" ng-click="peekaboo()">Submit</button>-->
-   <div id="ad-space" class="float col-sm-offset-10 col-sm-2">Your Ad Here!</div>
+    <div style="float: left; width: 70%">
+    <input type="text" class="form-control" placeholder="Song Title" ng-model="title">
+    <textarea class="form-control" name="song-area" id="" style="height:100%; margin:0px" ng-model="musicInput" placeholder="input chord-sheet here ..."></textarea>
     <form ng-submit="peekaboo()" class="form">
         <label name="flat-sharp">Flat</label>
         <input type="radio" name="flat-sharp" value="b" ng-model="accidental">
@@ -20,6 +22,44 @@
         <rzslider rz-slider-model="slider.value" rz-slider-options="slider.options" class="slider"></rzslider>
         <!--<input type="range" min="-11" max="11" ng-model="slider" list="ticks"><span>{{slider}}</span>-->
         <button id="songsubmit" ng-click="submit" class="btn btn-default">Convert</button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#helpModal">
+  Need Help?
+</button>
     </form>
+    </div>
+    <!--<button id="chordsubmit" class="btn btn-default" ng-click="peekaboo()">Submit</button>-->
+   <div style="width: 25%; height:100%; float: left" id="home-ad">Your Ad Here!</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Tips and Tricks</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Reasons why the converter might not work:</h3>
+        1. Chords should be in uppercase letters, and other references (maj, min, sus ... etc) should be in lowercase.</br>
+        2. Use + and - for augmented and diminished chords, other characters may prevent conversion.</br>
+        3. The words "Key" and "repeat" will be allowed on a chord line, do not use an uppcase "R" for the word "repeat."</br>
+        <h3>Features:</h3>
+        When converting a whole song, you may hit the convert button multiple times and the chords will be transposed according to the setting on the slider each time. For instance, if you lower the tone of a song one fret and that is not quite enough, you can leave the slider where it is (at -1) and hit the convert button to transpose the chords another fret down. This process can be repeated as often as necessary.</br>
+        When printing out a song, only what is displayed will be printed. This can be a problem if your song is larger than the existing text box. Fortunately, the lower right of the text box has a dragable corner! So, just drag this corner until your whole song is displayed. Then when you print, the whole song will print out (however, it will be on multiple pages). You can also hit "Ctrl-a" to select all of your song, then "Ctrl-c" to copy it to your computer clipboard. Then you can paste the entire song into your favorite word-processing program with "Ctrl-v" and print it from there.</br>
+        In order to delete a song, it must first be loaded into the conversion field.</br>
+        <h3>Additional Help:</h3>
+        If you need additional help, you can contact the authors at</br>
+        mrlaughingdragon@aol.com</br>
+        to address your specific issue.</br>
+        <h3>Thank You for using Musical-Keymaster!</h3>
+        <small>Musical-Keymaster was originally created as a student project by: Bert Allen, Brett Steckmen, and Rob Good. The authors recommend that you keep a back-up of all songs in your personal folder. We accept NO RESPONSIBILITY for lost songs.</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Return To Song</button>
+      </div>
+    </div>
+  </div>
 </div>
 <!--<span>{{musicInput}}</span>-->

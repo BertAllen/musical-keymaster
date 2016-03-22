@@ -5,13 +5,17 @@
 
 app.constant('FBREF', 'https://resplendent-torch-2208.firebaseio.com/')
 
-app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
+app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseArray, $firebaseObject, SweetAlert) {
     var ac = this;
     var db = new Firebase(FBREF);
-    $scope.member;
+    var authed = db.getAuth();
+    if (authed) {
+        $rootScope.member = $firebaseObject(new Firebase(FBREF + 'users/' + authed.uid));
+    }
+    //   $scope.member;
     // social button login
-    $scope.socialAuth = function (type) {
-        db.authWithOAuthPopup(type, function (err, authData) {
+    $scope.socialAuth = function(type) {
+        db.authWithOAuthPopup(type, function(err, authData) {
             if (err) {
                 console.log(err);
                 return;
@@ -20,15 +24,21 @@ app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
                 username: authData[type].displayName,
                 reputation: 0,
                 created: Date.now()
-            }     
-            $scope.$apply(function () {
-                $scope.member = userToSave;
-            })
-            db.child('users').child(authData.uid).update(userToSave)
+            }
+            $firebaseObject(new Firebase(FBREF + 'users/' + authData.uid)).$loaded(function(user) {
+                $rootScope.member = user;
+                if (!user.username) {
+                    $rootScope.member.username = userToSave.username;
+                    $rootScope.member.reputation = userToSave.reputation;
+                    $rootScope.member.created = userToSave.created;
+                    $rootScope.member.$save();
+                }
+            });
+            // db.child('users').child(authData.uid).update(userToSave)
         })
     }
-    
-    
+
+
     //receives info from the database-server and deals appropriately
     function handleDBResponse(err, authData) {
         if (err) {
@@ -41,25 +51,64 @@ app.controller('AuthController', function ($scope, FBREF, $firebaseArray) {
             reputation: 0,
             created: Date.now()
         }
-        $scope.$apply(function () {
-            $scope.member = userToSave;
-        })
+        // $scope.$apply(function() {
+        //     $rootScope.member = userToSave;
+        // })
         //THis LINE SAVES THE USER INFO INTO THE FIREBASE DB
-        db.child('users').child(authData.uid).update(userToSave);
+        $firebaseObject(new Firebase(FBREF + 'users/' + authData.uid)).$loaded(function(user) {
+            $rootScope.member = user;
+            if (!user.username) {
+                $rootScope.member.username = userToSave.username;
+                $rootScope.member.reputation = userToSave.reputation;
+                $rootScope.member.created = userToSave.created;
+                $rootScope.member.$save();
+            }
+        });
+    }
+    $rootScope.logOut = function() {
+        //debugger;
+        $rootScope.member = {};
     }
 
-
-    $scope.register = function () {
+    $scope.register = function() {
         db.createUser(ac.user, handleDBResponse);
     }
 
-    $scope.login = function () {
+    $scope.login = function() {
         alert('You\'re logged in');
         console.log(ac.user)
 
         db.authWithPassword(ac.user, handleDBResponse)
     }
 
- 
+    $scope.save = function() {
+        //        if ($rootScope.member.mySongs.title) {
+        if (!$rootScope.CANSAVE) {
+            alert('Before saving, please make sure your song has a title and you press the convert button with a slider setting of zero.')
+            return;
+        } else {
+            $rootScope.member.$save();
+        }
+    }
 
-})
+    $scope.killSong = function() {
+        SweetAlert.swal({
+            title: "Are you sure?",
+            text: "Your will not be able to recover this song if you continue!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, trash it!",
+            closeOnConfirm: false}, 
+            function(isConfirm) {
+                if (!isConfirm) {
+                    return;
+                }
+               SweetAlert.swal(">crumple, crumple — toss< ... It's gone!!");
+               delete $rootScope.member.mySongs[$rootScope.CANSAVE];
+               $rootScope.member.$save();
+                $rootScope.clrAftrDel();
+        });        
+    }    
+
+});
