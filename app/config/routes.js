@@ -10,7 +10,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     })
     
    .state('splash',{
-       url: '/splash',
+       url: '/splash/:member',
        templateUrl: 'repoChance/splash.html',
        controller: "AuthController",
        controllerAs: 'ac'

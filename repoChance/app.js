@@ -67,7 +67,6 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
     }
     $rootScope.logOut = function() {
         //debugger;
-        $rootScope.member.username = {};
         $rootScope.member = {};
     }
 

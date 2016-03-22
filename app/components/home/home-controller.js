@@ -24,7 +24,6 @@ app.controller('HomeController', function($rootScope, $scope, $stateParams, Conv
         //reassembles the individual lines back into one solid string --v
         $scope.musicInput = $scope.lineArr.join(String.fromCharCode(10));
         //stuff to save the song info into firebase --v
-        debugger;
         $rootScope.member.mySongs = $rootScope.member.mySongs || {};
         $rootScope.CANSAVE = $scope.title;
         var newSong = { "originalInput": originalInput, musicInput: $scope.musicInput, title: $scope.title };
