@@ -42,11 +42,13 @@ app.controller('HomeController', function($rootScope, $scope, $stateParams, Conv
     $rootScope.clrAftrDel = function() {
         $scope.musicInput = "";
         $scope.title = "";
+        return;
     }
 
-    $scope.revert = function() {
+    $rootScope.revert = function() {
         debugger;
         $scope.musicInput = $rootScope.member.mySongs[$scope.title].originalInput;
+        return $scope.musicInput;
 }
 
     $scope.downAndDirty = function() {
