@@ -81,6 +81,14 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
         db.authWithPassword(ac.user, handleDBResponse)
     }
 
+    $scope.share = function() {
+        debugger;
+        $scope.public = {};
+        $scope.public.songs = $rootScope.member.mySongs[$rootScope.CANSAVE];
+        $scope.public.$save();
+        alert("Thank you for sharing this song with the Musical-Keymaster community.")
+    }
+
     $scope.save = function() {
         //        if ($rootScope.member.mySongs.title) {
         if (!$rootScope.CANSAVE) {

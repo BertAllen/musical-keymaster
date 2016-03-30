@@ -45,6 +45,7 @@ app.controller('HomeController', function($rootScope, $scope, $stateParams, Conv
         $rootScope.member.$loaded(function() {
             $scope.musicInput = $rootScope.member.mySongs[loadMe].musicInput;
             $rootScope.CANSAVE = $scope.title;
+            $scope.goBack = $rootScope.member.mySongs[loadMe].netShift;
         })
     }
 
