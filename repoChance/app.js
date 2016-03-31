@@ -7,6 +7,7 @@ app.constant('FBREF', 'https://resplendent-torch-2208.firebaseio.com/')
 
 app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseArray, $firebaseObject, SweetAlert) {
 //original firebase auth-setup stuff --v
+    // $scope.songbook = "member";    
     var ac = this;
     var db = new Firebase(FBREF);
     var authed = db.getAuth();
@@ -123,6 +124,9 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
                $rootScope.member.$save();
                 $rootScope.clrAftrDel();
         });        
-    }    
+    }
+
+//stuff to work with the modal --v
+// if($scope)
 
 });

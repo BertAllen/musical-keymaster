@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css">
-       <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700' rel='stylesheet' type='text/css'>
     <!--<link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css">-->
     <link rel="stylesheet" href="styling/style.css">
@@ -29,7 +29,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a title="Home" class="navbar-brand" ui-sref="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
                     <li><a title="On Demand" class="navbar-brand" ui-sref="onDemand"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
-                    <li><a title="Load Song" class="navbar-brand"  data-toggle="modal" data-target="#songsModal"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+                    <li><a title="Load Song" class="navbar-brand" data-toggle="modal" data-target="#songsModal"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+                    <li><a title="Public Songbook" class="navbar-brand" data-toggle="modal" data-target="#publicSongsModal"><span class="glyphicon glyphicon-address-book" aria-hidden="true"></span></a></li>
                     <li><a title="Save Song" class="navbar-brand" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></a></li>
                     <li><a title="Delete Song" class="navbar-brand" ng-click="killSong()" ui-sref="home"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
                     <li><a title="Share" class="navbar-brand" ng-click="share()"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></li>
@@ -44,13 +45,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Your Songs</h4>
-                    </div>
+                        </div>
                     <div class="modal-body">
-                         <ul id="songList" ng-repeat="song in member.mySongs">
-                             <li id="song">
-                                 {{song.title}} <a ui-sref="home({songName:song.title})"><span class="badge">load song</span></a>
-                             </li>
-                         </ul>
+                        <ul id="songList" ng-repeat="song in member.mySongs">
+                            <li id="song">
+                                {{song.title}} <a ui-sref="home({songName:song.title})"><span class="badge">load song</span></a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -58,15 +59,37 @@
                 </div>
             </div>
         </div>
+        <!--public song loading model-->
+                <div class="modal fade" id="publicSongsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Publically Available Songs</h4>
+                       </div>
+                    <div class="modal-body">
+                        <ul id="songList" ng-repeat="song in Public.songs">
+                            <li id="song">
+                                {{song.title}} <a ui-sref="home({songName:song.title})"><span class="badge">load song</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of public song loading model-->
+        
         <!--<dnd-box></dnd-box>-->
         <!--LOAD ANGULAR-->
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
         <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
-        <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>        
+        <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
         <script src="bower_components/ngSweetAlert/SweetAlert.min.js"></script>
-<!--LOAD FIREBASE-->
+        <!--LOAD FIREBASE-->
         <script src="bower_components/firebase/firebase.js"></script>
         <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
 
