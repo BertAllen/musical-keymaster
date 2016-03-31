@@ -6,12 +6,16 @@
 app.constant('FBREF', 'https://resplendent-torch-2208.firebaseio.com/')
 
 app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseArray, $firebaseObject, SweetAlert) {
+//original firebase auth-setup stuff --v
+    // $scope.songbook = "member";    
     var ac = this;
     var db = new Firebase(FBREF);
     var authed = db.getAuth();
     if (authed) {
         $rootScope.member = $firebaseObject(new Firebase(FBREF + 'users/' + authed.uid));
     }
+//new stuff added to create a public folder on firebase --v
+    // debugger; $scope.public = $firebaseObject(new Firebase(FBREF + 'users/Public' + authed.uid)); //flawed code    
     //   $scope.member;
     // social button login
     $scope.socialAuth = function(type) {
@@ -85,7 +89,10 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
         debugger;
         $scope.public = {};
         $scope.public.songs = $rootScope.member.mySongs[$rootScope.CANSAVE];
-        $scope.public.$save();
+        // var pubref = ref.child("users/Public");
+        var pubref = new Firebase("https://resplendent-torch-2208.firebaseio.com/users/Public");
+        pubref.push($scope.public.songs);
+        // $scope.public.$add();
         alert("Thank you for sharing this song with the Musical-Keymaster community.")
     }
 
@@ -117,6 +124,9 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
                $rootScope.member.$save();
                 $rootScope.clrAftrDel();
         });        
-    }    
+    }
+
+//stuff to work with the modal --v
+// if($scope)
 
 });
