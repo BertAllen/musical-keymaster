@@ -90,7 +90,7 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
         $scope.public.songs = $rootScope.member.mySongs[$rootScope.CANSAVE];
         // var pubref = ref.child("users/Public");
         var pubref = new Firebase("https://resplendent-torch-2208.firebaseio.com/users/Public");
-        pubref.set($scope.public.songs);
+        pubref.push($scope.public.songs);
         // $scope.public.$add();
         alert("Thank you for sharing this song with the Musical-Keymaster community.")
     }
