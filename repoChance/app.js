@@ -11,6 +11,9 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
     var ac = this;
     var db = new Firebase(FBREF);
     var authed = db.getAuth();
+
+    $rootScope.public = $firebaseArray(new Firebase(FBREF + 'public'));
+
     if (authed) {
         $rootScope.member = $firebaseObject(new Firebase(FBREF + 'users/' + authed.uid));
     }
@@ -86,14 +89,12 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
     }
 
     $scope.share = function() {
-        debugger;
-        $scope.public = {};
-        $scope.public.songs = $rootScope.member.mySongs[$rootScope.CANSAVE];
-        // var pubref = ref.child("users/Public");
-        var pubref = new Firebase("https://resplendent-torch-2208.firebaseio.com/users/Public");
-        pubref.push($scope.public.songs);
+        if (!$rootScope.newSong) {
+            return alert('sorry you must save your song before sharing')
+        }
+        $rootScope.public.$add($rootScope.newSong);
         // $scope.public.$add();
-        alert("Thank you for sharing this song with the Musical-Keymaster community.")
+        alert("Thank you for sharing \"" + $rootScope.newSong.title + "\" with the Musical-Keymaster community.")
     }
 
     $scope.save = function() {
@@ -102,6 +103,7 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
             alert('Before saving, please make sure your song has a title and you press the convert button with a slider setting of zero.')
             return;
         } else {
+            debugger;
             $rootScope.member.$save();
         }
     }

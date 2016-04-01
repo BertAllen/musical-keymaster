@@ -33,16 +33,18 @@ app.controller('HomeController', function($rootScope, $scope, $stateParams, Conv
         //reassembles the individual lines back into one solid string --v
         $scope.musicInput = $scope.lineArr.join(String.fromCharCode(10));
         //stuff to save the song info into firebase --v
+        debugger;
         $rootScope.member.mySongs = $rootScope.member.mySongs || {};
         $rootScope.CANSAVE = $scope.title;
-        var newSong = {musicInput: $scope.musicInput, title: $scope.title, netShift: $scope.goBack };
-        $rootScope.member.mySongs[newSong.title] = newSong;
+        $rootScope.newSong = {musicInput: $scope.musicInput, title: $scope.title, netShift: $scope.goBack };
+        $rootScope.member.mySongs[$rootScope.newSong.title] = $rootScope.newSong;
 
     }//end of peekaboo
 
     $rootScope.loadSong = function(loadMe) {
         $scope.title = loadMe;
         $rootScope.member.$loaded(function() {
+            $rootScope.newSong = $rootScope.member.mySongs[loadMe]; 
             $scope.musicInput = $rootScope.member.mySongs[loadMe].musicInput;
             $rootScope.CANSAVE = $scope.title;
             $scope.goBack = $rootScope.member.mySongs[loadMe].netShift;
