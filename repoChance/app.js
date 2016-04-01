@@ -6,12 +6,19 @@
 app.constant('FBREF', 'https://resplendent-torch-2208.firebaseio.com/')
 
 app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseArray, $firebaseObject, SweetAlert) {
+//original firebase auth-setup stuff --v
+    // $scope.songbook = "member";    
     var ac = this;
     var db = new Firebase(FBREF);
     var authed = db.getAuth();
+
+    $rootScope.public = $firebaseArray(new Firebase(FBREF + 'public'));
+
     if (authed) {
         $rootScope.member = $firebaseObject(new Firebase(FBREF + 'users/' + authed.uid));
     }
+//new stuff added to create a public folder on firebase --v
+    // debugger; $scope.public = $firebaseObject(new Firebase(FBREF + 'users/Public' + authed.uid)); //flawed code    
     //   $scope.member;
     // social button login
     $scope.socialAuth = function(type) {
@@ -81,12 +88,22 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
         db.authWithPassword(ac.user, handleDBResponse)
     }
 
+    $scope.share = function() {
+        if (!$rootScope.newSong) {
+            return alert('sorry you must save your song before sharing')
+        }
+        $rootScope.public.$add($rootScope.newSong);
+        // $scope.public.$add();
+        alert("Thank you for sharing \"" + $rootScope.newSong.title + "\" with the Musical-Keymaster community.")
+    }
+
     $scope.save = function() {
         //        if ($rootScope.member.mySongs.title) {
         if (!$rootScope.CANSAVE) {
             alert('Before saving, please make sure your song has a title and you press the convert button with a slider setting of zero.')
             return;
         } else {
+            debugger;
             $rootScope.member.$save();
         }
     }
@@ -109,6 +126,9 @@ app.controller('AuthController', function($rootScope, $scope, FBREF, $firebaseAr
                $rootScope.member.$save();
                 $rootScope.clrAftrDel();
         });        
-    }    
+    }
+
+//stuff to work with the modal --v
+// if($scope)
 
 });

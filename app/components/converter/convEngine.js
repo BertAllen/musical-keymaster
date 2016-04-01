@@ -115,7 +115,6 @@ app.service("ConversionEngine", function () {
     this.guitarList = ['A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab'];
 
     this.convert = function (tabLine, slider, accidental) {
-        // debugger;
         this.newTabLine = '';
         for (var i = 0; i < tabLine.length; i++) {
             var chord = '';
